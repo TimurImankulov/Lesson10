@@ -8,17 +8,13 @@ class MainActivity : AppCompatActivity() {
     private var recyclerView: RecyclerView? = null
     private var recyclerView1: RecyclerView? = null
 
-    var category = "Природа"
-    var title = "Острова"
-    var description = "Остров находиться в тихом океане"
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         initView()
-        setAdapter()
-        setAdapter1()
+        setAdapterCountry()
+        setAdapterNature()
     }
 
     private fun initView(){
@@ -26,27 +22,27 @@ class MainActivity : AppCompatActivity() {
         recyclerView1 = findViewById(R.id.recyclerView1)
     }
 
-    private fun setAdapter() {
+    private fun setAdapterCountry() {
         val list = arrayListOf<CountryExampleModel>()
 
         for (i in 1..10){
-            list.add(CountryExampleModel("Страны тихоокеанского региона", getImageID(i)))
+            list.add(CountryExampleModel("Страны тихоокеанского региона", getImageOfCountry(i)))
         }
         val adapter = CountryAdapter(list)
         recyclerView?.adapter = adapter
     }
 
-    private fun setAdapter1() {
+    private fun setAdapterNature() {
         val list1 = arrayListOf<NatureExampleModel>()
 
         for (i in 1..10){
-            list1.add(NatureExampleModel(category, title, description, getImageID1(i)))
+            list1.add(NatureExampleModel("Природа", "Острова", "Остров находиться в тихом океане", getImageOfNature(i)))
         }
         val adapter1 = NatureAdapter(list1)
         recyclerView1?.adapter = adapter1
     }
 
-    private fun getImageID(position: Int): Int {
+    private fun getImageOfCountry(position: Int): Int {
         val result = position % 3
         var image = 0
 
@@ -57,8 +53,8 @@ class MainActivity : AppCompatActivity() {
         }
         return image
     }
-
-    private fun getImageID1(position: Int): Int {
+    
+    private fun getImageOfNature(position: Int): Int {
         val result = position % 3
         var image = 0
 
