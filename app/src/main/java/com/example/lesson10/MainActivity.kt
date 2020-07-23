@@ -16,8 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        recyclerView = findViewById(R.id.recyclerView)
-        recyclerView1 = findViewById(R.id.recyclerView1)
+        initView()
 
         val list = arrayListOf<CountryExampleModel>()
         val list1 = arrayListOf<NatureExampleModel>()
@@ -34,6 +33,11 @@ class MainActivity : AppCompatActivity() {
         }
         val adapter1 = NatureAdapter(list1)
         recyclerView1?.adapter = adapter1
+    }
+
+    private fun initView(){
+        recyclerView = findViewById(R.id.recyclerView)
+        recyclerView1 = findViewById(R.id.recyclerView1)
     }
 
     private fun getImageID(position: Int): Int {
