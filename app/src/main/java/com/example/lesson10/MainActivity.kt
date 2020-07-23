@@ -17,27 +17,33 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         initView()
+        setAdapter()
+        setAdapter1()
+    }
 
+    private fun initView(){
+        recyclerView = findViewById(R.id.recyclerView)
+        recyclerView1 = findViewById(R.id.recyclerView1)
+    }
+
+    private fun setAdapter() {
         val list = arrayListOf<CountryExampleModel>()
-        val list1 = arrayListOf<NatureExampleModel>()
 
         for (i in 1..10){
             list.add(CountryExampleModel("Страны тихоокеанского региона", getImageID(i)))
         }
         val adapter = CountryAdapter(list)
         recyclerView?.adapter = adapter
+    }
 
+    private fun setAdapter1() {
+        val list1 = arrayListOf<NatureExampleModel>()
 
         for (i in 1..10){
             list1.add(NatureExampleModel(category, title, description, getImageID1(i)))
         }
         val adapter1 = NatureAdapter(list1)
         recyclerView1?.adapter = adapter1
-    }
-
-    private fun initView(){
-        recyclerView = findViewById(R.id.recyclerView)
-        recyclerView1 = findViewById(R.id.recyclerView1)
     }
 
     private fun getImageID(position: Int): Int {
